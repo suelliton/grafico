@@ -1,0 +1,34 @@
+{% extends 'grafico/base.html' %}
+
+{% block content %}
+    <div class="grafico" >
+      <script type="text/javascript" src="Chart.js">
+      var data = {
+       labels: ["10 a 12.2", "12.3 a 14.4", "14.5 a 16.6", "16.7 a 18.8", "18.9 a 21"],
+       datasets: [
+           {
+               label: "Grafico de barras",
+               backgroundColor: "rgba(255,99,132,0.2)",
+               borderColor: "rgba(255,99,132,1)",
+               borderWidth: 1,
+               hoverBackgroundColor: "rgba(255,99,132,0.4)",
+               hoverBorderColor: "rgba(255,99,132,1)",
+               data: [65, 59, 80, 81, 56,],
+           }
+       ]
+   };
+
+      var myBarChart = new Chart(ctx, {
+  type: 'bar',
+  data: data,
+  options: options
+   });
+
+
+
+      </script>
+
+
+
+    </div>
+{% endblock %}
