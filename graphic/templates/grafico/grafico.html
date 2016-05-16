@@ -1,34 +1,68 @@
-{% extends 'grafico/base.html' %}
+<!DOCTYPE html>
 
-{% block content %}
-    <div class="grafico" >
-      <script type="text/javascript" src="Chart.js">
-      var data = {
-       labels: ["10 a 12.2", "12.3 a 14.4", "14.5 a 16.6", "16.7 a 18.8", "18.9 a 21"],
-       datasets: [
-           {
-               label: "Grafico de barras",
-               backgroundColor: "rgba(255,99,132,0.2)",
-               borderColor: "rgba(255,99,132,1)",
-               borderWidth: 1,
-               hoverBackgroundColor: "rgba(255,99,132,0.4)",
-               hoverBorderColor: "rgba(255,99,132,1)",
-               data: [65, 59, 80, 81, 56,],
-           }
-       ]
-   };
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
 
-      var myBarChart = new Chart(ctx, {
-  type: 'bar',
-  data: data,
-  options: options
-   });
+    <title>Chart.js - criando gráficos com a biblioteca Chart.js</title>
+
+    <script src="/static/js/Chart.min.js"></script>
+    <link rel="stylesheet" href="/static/css/estiloGrafico.css" media="screen" title="no title" charset="utf-8">
 
 
 
-      </script>
+    <script type="text/javascript">
+        var randomnb = function(){ return Math.round(Math.random()*1300)};
+    </script>
+
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>Chart.js - criando gráficos com a biblioteca Chart.js</h1>
 
 
+        <h2>Gráfico Barra</h2>
+
+        <div class="box-chart">
+
+            <canvas id="GraficoBarra" style="width:100%;"></canvas>
+
+            <script type="text/javascript">
+
+                var options = {
+                    responsive:true
+                };
+
+                var data = {
+                    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"],
+                    datasets: [
+                        {
+                            label: "Dados primários",
+                            fillColor: "rgba(128,0,128,0.5)",
+                            strokeColor: "rgba(220,220,220,0.8)",
+                            highlightFill: "rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: [ randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+                        },
+
+                    ]
+                };
+
+                window.onload = function(){
+                    var ctx = document.getElementById("GraficoBarra").getContext("2d");
+                    var BarChart = new Chart(ctx).Bar(data, options);
+                }
+            </script>
+
+            <a href="javascript:window.history.go(-1)">Voltar</a>
+
+        </div>
 
     </div>
-{% endblock %}
+</body>
+
+</html>
