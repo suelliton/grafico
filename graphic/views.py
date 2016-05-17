@@ -1,12 +1,18 @@
 from django.shortcuts import render
 import csv
 
+
+
+
 def index(request):
      post = 3
      return render(request, 'grafico/index.html',{'post':post})
 
 def grafico(request):
 #aqui tenho que receber o arquivo de texto em estado bruto
+    if request.method == 'POST':
+        arquivo = FileUploadForm(request.POST, request.FILES)
+
     x = []
     a = 0
     b = 0

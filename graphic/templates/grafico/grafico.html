@@ -1,3 +1,5 @@
+{% extends 'grafico/base.html' %}
+{% block content %}
 <!DOCTYPE html>
 
 <html lang="pt-BR">
@@ -5,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
-    <title>Chart.js - criando gráficos com a biblioteca Chart.js</title>
+    <title>Gráfico que mostra a área em milimetros de sementes</title>
 
     <script src="/static/js/Chart.min.js"></script>
     <link rel="stylesheet" href="/static/css/estiloGrafico.css" media="screen" title="no title" charset="utf-8">
@@ -13,7 +15,7 @@
 
 
     <script type="text/javascript">
-        var randomnb = function(){ return Math.round(Math.random()*1300)};
+        var randomnb = function(){ return Math.round(Math.random()*20)};
     </script>
 
 </head>
@@ -22,7 +24,7 @@
 
     <div class="box">
 
-        <h1>Chart.js - criando gráficos com a biblioteca Chart.js</h1>
+        <h1>Gráfico que mostra a área em milimetros de sementes</h1>
 
 
         <h2>Gráfico Barra</h2>
@@ -66,3 +68,4 @@
 </body>
 
 </html>
+{% endblock%}
