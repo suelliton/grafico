@@ -3,8 +3,7 @@ from .models import Arquivo
 
 
 
-class PostForm(forms.ModelForm):
-
+class FormArquivo(forms.ModelForm):
     class Meta:
         model = Arquivo
-        fields = ('arq')
+        fields=('arq',)

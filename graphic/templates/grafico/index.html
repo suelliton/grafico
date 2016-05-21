@@ -4,14 +4,11 @@
       <div class="index">
 <h1>Envie o arquivo a ser analisado:</h1>
 
-  <form method="POST" class="post-form">{% csrf_token %}
-         {{ form.as_p }}
-         <button type="submit" class="save btn btn-default">Guardar</button>
-     </form>
-
-
-
-
+<form  action="" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+{{form.as_p}}
+<button type="submit">Adicionar</button>
+</form>
 
 
         <!-- aqui tenho que criar ou chamar o forms.py para criar

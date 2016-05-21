@@ -21,6 +21,24 @@
 </head>
 
 <body>
+  <ul>
+  {% for item in dados %}
+  <li>
+      {{ item}}
+  </li>
+  {% empty%}
+    <li>Sem itens na lista</li>
+  {% endfor %}
+</ul>
+
+  {% for dado in dados %}
+
+               DATA.push({{ dado  }})
+
+  {% endfor %}
+
+
+
 
     <div class="box">
 
@@ -48,7 +66,7 @@
                             strokeColor: "rgba(220,220,220,0.8)",
                             highlightFill: "rgba(220,220,220,0.75)",
                             highlightStroke: "rgba(220,220,220,1)",
-                            data: [ randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+                            data:DATA,
                         },
 
                     ]
