@@ -59,10 +59,11 @@ def grafico(arquivo):
 
 def  index ( request ): 
     if request.method  ==  'POST' : 
-        form  =  FormArquivo( request.POST , request.FILES ) 
-        if  form.is_valid(): 
-            grafico(request.FILES[ 'arq' ].read) 
-            return render_to_response('grafico/grafico.html/',{} ) 
+        form = FormArquivo(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return grafico(request,request.FILES['arq'].read())
+            
     else : 
         form = FormArquivo() 
     return  render ( request ,'grafico/index.html' ,  { 'form' :  form })
@@ -70,17 +71,18 @@ def  index ( request ):
 
 
 
-def grafico(f):
+def grafico(request,arq):
     x =[]
     a = 0
     b = 0
     c = 0
     d = 0
     e = 0
-
-    with open('arq', 'wb+') as destination:
-        reader=csv.reader(destination, delimiter = ' ')
+    data = []
+    with open('/home/suelliton/projetos/grafico/graphic/media/seeds.csv')  as destination:        
+        reader=csv.reader(destination, delimiter = '\t')
         for row in reader:
+                            
             x.append(float(row[0]))
 
     for i in range(0,len(x)-1):
@@ -94,5 +96,7 @@ def grafico(f):
             d +=1
         else:
             e +=1
+    #dados = ["hello","World","for","you","and me"]
     dados = [a,b,c,d,e]
-    return render_to_response('grafico/grafico.html/',{'dados':dados} ) 
+    return render(request,'grafico/grafico.html/',{'dados':dados},
+     context_instance = RequestContext(request)) 

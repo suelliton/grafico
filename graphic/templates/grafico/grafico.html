@@ -18,25 +18,26 @@
         var randomnb = function(){ return Math.round(Math.random()*20)};
     </script>
 
+
+    
 </head>
 
-<body>
+<body >
+
+    
+    
   <ul>
   {% for item in dados %}
+
   <li>
-      {{ item}}
+
+      {{ item }}
+
   </li>
-  {% empty%}
+  {% empty %}
     <li>Sem itens na lista</li>
   {% endfor %}
 </ul>
-
-  {% for dado in dados %}
-
-               DATA.push({{ dado  }})
-
-  {% endfor %}
-
 
 
 
@@ -66,7 +67,7 @@
                             strokeColor: "rgba(220,220,220,0.8)",
                             highlightFill: "rgba(220,220,220,0.75)",
                             highlightStroke: "rgba(220,220,220,1)",
-                            data:DATA,
+                            data:{{ dados }},
                         },
 
                     ]
