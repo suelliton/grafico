@@ -8,31 +8,12 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
     <title>Gráfico que mostra a área em milimetros de sementes</title>
-
     <script src="/static/js/Chart.min.js"></script>
     <link rel="stylesheet" href="/static/css/estiloGrafico.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/static/css/grafico.css" charset="utf-8">
-
-
-    <script type="text/javascript">
-        var randomnb = function(){ return Math.round(Math.random()*20)};
-    </script>
-
-
-    <script type="text/javascript">
        
-
-
-    </script>
-
-
-    
 </head>
-
-<body >
-
-    
-    
+<body >     
   <!--<ul>
   {% for item in dados %}
 
@@ -45,15 +26,11 @@
     <li>Sem itens na lista</li>
   {% endfor %}
 </ul>  -->
-
-
-
     <div class="box">
 
         <h1>Área das sementes dividido em 5 classes</h1>
         <h2>Gráfico Barra</h2>
              <div class="box-chart">
-
             <canvas id="GraficoBarra" style="width:100%;"></canvas>
 
             <script type="text/javascript">
@@ -72,40 +49,24 @@
                             data:{{ dados }},
                         },
                     ]
-                };
-                 
-                   
-                    
-                
+                };                   
             </script>
-
             <a href="javascript:window.history.go(-1)">Voltar</a>
-
         </div>
-
     </div>
-
-
-    
-
-
+                    <!--  pass  -->
 
 
 
         <div class="box">
-
         <h1>Frequência acumulada </h1>
-        <h2>Gráfico linha </h2>
-    
+        <h2>Gráfico linha </h2>    
             <canvas id="GraficoLine" style="width:100%;"></canvas>
-
             <script type="text/javascript">
-
                 var options = {
                     responsive:true
 
                 };
-
                 var data = {
                     labels: {{ freq }},
                     datasets: [
@@ -113,40 +74,25 @@
                             label: "Dados primários",
                             fillColor: "rgba(20,220,220,1)",
                             strokeColor: "rgba(220,220,220,1)",
-                            pointColor: "rgba(220,220,220,1)",
-                            pointStrokeColor: "#fff",
+                            pointColor: "rgba(220,220,220,1)",                            
+                            pointStrokeColor: "#fff",                          
                             pointHighlightFill: "#fff",
                             pointHighlightStroke: "rgba(220,220,220,1)",
                             data: {{ freq }},
-                        },
-                        
+                        },                        
                     ]
-                };               
-                
+                };                               
                 window.onload = function(){
-
                     var ctx = document.getElementById("GraficoLine").getContext("2d");
                     var LineChart = new Chart(ctx).Line( data, options);
                      var ctx = document.getElementById("GraficoBarra").getContext("2d");
                     var BarChart = new Chart(ctx).Bar(data2, options2);
                     carrega();
                 }  
-            </script>
-
-        
+            </script>        
             <a href="javascript:window.history.go(-1)">Voltar</a>
-
-        </div>
-    
-    </div>
-
-    
-
-           
-
-
-
+        </div>    
+    </div>     
 </body>
-
 </html>
 {% endblock%}
