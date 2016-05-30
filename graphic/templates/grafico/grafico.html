@@ -65,9 +65,9 @@
                     datasets: [
                         {
                             label: "Dados primários",
-                            fillColor: "rgba(128,0,128,0.5)",
-                            strokeColor: "rgba(220,220,220,0.8)",
-                            highlightFill: "rgba(220,220,220,0.75)",
+                            fillColor: "rgba(128,0,128,0.8)",
+                            strokeColor: "rgba(200,220,220,0.8)",
+                            highlightFill: "rgba(20,220,220,0.75)",
                             highlightStroke: "rgba(220,220,220,1)",
                             data:{{ dados }},
                         },
@@ -103,6 +103,7 @@
 
                 var options = {
                     responsive:true
+
                 };
 
                 var data = {
@@ -125,7 +126,7 @@
                 window.onload = function(){
 
                     var ctx = document.getElementById("GraficoLine").getContext("2d");
-                    var LineChart = new Chart(ctx).Line(data, options);
+                    var LineChart = new Chart(ctx).Line( data, options);
                      var ctx = document.getElementById("GraficoBarra").getContext("2d");
                     var BarChart = new Chart(ctx).Bar(data2, options2);
                     carrega();

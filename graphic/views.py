@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import os
 import csv
 from forms import FormArquivo
 from django.http import HttpResponseRedirect
@@ -109,7 +110,7 @@ def grafico(request,arq):
 
 
     frequenciaAcumulada=[]
-
+ 
     for i in range(0,len(ordenado)-1):
         acumulo = 1 
         vp=1
@@ -129,11 +130,11 @@ def grafico(request,arq):
         acumuloFinal = acumulo + anterior
         anterior = acumuloFinal
         frequenciaAcumulada.append(acumuloFinal)
+        
         if vp >= 2:
             i=i+vp            
 
-
-
+    os.remove('/home/suelliton/projetos/grafico/graphic/media/seeds.csv')
     
     dados = [a,b,c,d,e]
     d={'dados':dados,'freq':frequenciaAcumulada}
