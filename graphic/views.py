@@ -81,8 +81,7 @@ def grafico(request,arq):
     data = []
     with open('/home/suelliton/projetos/grafico/graphic/media/seeds.csv')  as destination:        
         reader=csv.reader(destination, delimiter = '\t')
-        for row in reader:
-                            
+        for row in reader:                            
             x.append(float(row[0]))
 
     for i in range(0,len(x)-1):
@@ -96,7 +95,46 @@ def grafico(request,arq):
             d +=1
         else:
             e +=1
-    #dados = ["hello","World","for","you","and me"]
+
+    
+
+    def bubble_sort(lista):
+        for i in range(0, len(lista)-1):
+            for j in range(0, len(lista)-1-i):
+                if lista[ j ] > lista[j + 1]:
+                        lista[j], lista[j + 1] = lista[j + 1], lista[j]
+                return lista
+
+    ordenado = bubble_sort(x)
+
+
+    frequenciaAcumulada=[]
+
+    for i in range(0,len(ordenado)-1):
+        acumulo = 1 
+        vp=1
+        sair = False
+        if i==0:
+            anterior = 0
+
+
+        while sair == False:    
+            if ordenado[i] == ordenado[i+vp]:
+                acumulo = acumulo+1
+                vp = vp+1
+            
+            else:
+                sair = True
+
+        acumuloFinal = acumulo + anterior
+        anterior = acumuloFinal
+        frequenciaAcumulada.append(acumuloFinal)
+        if vp >= 2:
+            i=i+vp            
+
+
+
+    
     dados = [a,b,c,d,e]
-    return render(request,'grafico/grafico.html/',{'dados':dados},
-     context_instance = RequestContext(request)) 
+    d={'dados':dados,'freq':frequenciaAcumulada}
+    return render(request,'grafico/grafico.html/',d)    

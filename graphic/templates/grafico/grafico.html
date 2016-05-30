@@ -11,11 +11,18 @@
 
     <script src="/static/js/Chart.min.js"></script>
     <link rel="stylesheet" href="/static/css/estiloGrafico.css" media="screen" title="no title" charset="utf-8">
-
+    <link rel="stylesheet" type="text/css" href="/static/css/grafico.css" charset="utf-8">
 
 
     <script type="text/javascript">
         var randomnb = function(){ return Math.round(Math.random()*20)};
+    </script>
+
+
+    <script type="text/javascript">
+       
+
+
     </script>
 
 
@@ -26,7 +33,7 @@
 
     
     
-  <ul>
+  <!--<ul>
   {% for item in dados %}
 
   <li>
@@ -37,29 +44,24 @@
   {% empty %}
     <li>Sem itens na lista</li>
   {% endfor %}
-</ul>
+</ul>  -->
 
 
 
     <div class="box">
 
-        <h1>Gráfico que mostra a área em milimetros de sementes</h1>
-
-
+        <h1>Área das sementes dividido em 5 classes</h1>
         <h2>Gráfico Barra</h2>
-
-        <div class="box-chart">
+             <div class="box-chart">
 
             <canvas id="GraficoBarra" style="width:100%;"></canvas>
 
             <script type="text/javascript">
-
-                var options = {
+                var options2 = {
                     responsive:true
                 };
-
-                var data = {
-                    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"],
+                var data2 = {
+                    labels: ["10 a 12,2", "12,2 a 14,4", "14,4 a 16,6", "16,6 a 18,8", "18,8 a 21"],
                     datasets: [
                         {
                             label: "Dados primários",
@@ -69,14 +71,12 @@
                             highlightStroke: "rgba(220,220,220,1)",
                             data:{{ dados }},
                         },
-
                     ]
                 };
-
-                window.onload = function(){
-                    var ctx = document.getElementById("GraficoBarra").getContext("2d");
-                    var BarChart = new Chart(ctx).Bar(data, options);
-                }
+                 
+                   
+                    
+                
             </script>
 
             <a href="javascript:window.history.go(-1)">Voltar</a>
@@ -84,6 +84,67 @@
         </div>
 
     </div>
+
+
+    
+
+
+
+
+
+        <div class="box">
+
+        <h1>Frequência acumulada </h1>
+        <h2>Gráfico linha </h2>
+    
+            <canvas id="GraficoLine" style="width:100%;"></canvas>
+
+            <script type="text/javascript">
+
+                var options = {
+                    responsive:true
+                };
+
+                var data = {
+                    labels: {{ freq }},
+                    datasets: [
+                        {
+                            label: "Dados primários",
+                            fillColor: "rgba(20,220,220,1)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: {{ freq }},
+                        },
+                        
+                    ]
+                };               
+                
+                window.onload = function(){
+
+                    var ctx = document.getElementById("GraficoLine").getContext("2d");
+                    var LineChart = new Chart(ctx).Line(data, options);
+                     var ctx = document.getElementById("GraficoBarra").getContext("2d");
+                    var BarChart = new Chart(ctx).Bar(data2, options2);
+                    carrega();
+                }  
+            </script>
+
+        
+            <a href="javascript:window.history.go(-1)">Voltar</a>
+
+        </div>
+    
+    </div>
+
+    
+
+           
+
+
+
 </body>
 
 </html>
