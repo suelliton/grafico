@@ -1,15 +1,18 @@
 
 {% extends 'grafico/base.html' %}
-      {% block content %}
+      {% block content %}     
       <div class="index">
-<h1>Envie o arquivo a ser analisado:</h1>
+<h1>Envie o arquivo csv a ser analisado:</h1>
+
 
 <form  action="" method="post" enctype="multipart/form-data">
   {% csrf_token %}
 {{form.as_p}}
 <button type="submit">Gerar gráfico</button>
+
+
 </form>
-	<img src="/static/imagens/estatistica.jpg" width="1000">
+	<img src="/static/imagens/estatistica.jpg" width="1250" height="350">
 
 
         <!-- aqui tenho que criar ou chamar o forms.py para criar
@@ -20,3 +23,4 @@
 
 
         {% endblock content %}
+

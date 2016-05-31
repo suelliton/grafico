@@ -13,7 +13,11 @@ def  index ( request ):
         form = FormArquivo(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return grafico(request,request.FILES['arq'].read())
+            file = request.FILES['arq']
+
+           # os.rename('/home/suelliton/projetos/grafico/graphic/media/'+file.name, 
+               # '/home/suelliton/projetos/grafico/graphic/media/seeds.csv')
+            return grafico(request,file)
             
     else : 
         form = FormArquivo() 
@@ -22,7 +26,7 @@ def  index ( request ):
 
 
 
-def grafico(request,arq):
+def grafico(request,file):
     x =[]
     a = 0
     b = 0
@@ -30,7 +34,8 @@ def grafico(request,arq):
     d = 0
     e = 0
     data = []
-    with open('/home/suelliton/projetos/grafico/graphic/media/seeds.csv')  as destination:        
+
+    with open('/home/suelliton/projetos/grafico/graphic/media/'+file.name)  as destination:        
         reader=csv.reader(destination, delimiter = '\t')
         for row in reader:                            
             x.append(float(row[0]))
@@ -84,7 +89,7 @@ def grafico(request,arq):
         if vp >= 2:
             i=i+vp            
 
-    os.remove('/home/suelliton/projetos/grafico/graphic/media/seeds.csv')
+    os.remove('/home/suelliton/projetos/grafico/graphic/media/'+file.name)
     
     dados = [a,b,c,d,e]
     d={'dados':dados,'freq':frequenciaAcumulada}
